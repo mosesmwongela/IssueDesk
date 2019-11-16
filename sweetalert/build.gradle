@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+
+version = 1.4
+group = 5
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 17
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "com.google.android.material:material:1.0.0"
+    implementation 'com.pnikosis:materialish-progress:1.7'
+}
+
+// I may push to maven central at some point, for now just using jitpack.io.
+// apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
