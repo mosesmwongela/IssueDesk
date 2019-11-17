@@ -43,14 +43,13 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
 
         String customer_id = customer.getId();
         String customer_name = customer.getName();
-        String customer_email = customer.getPhone();
+        String customer_email = customer.getEmail();
         String customer_phone = customer.getPhone();
 
 
         holder.tvCustomerName.setText(customer_name);
         holder.tvPhone.setText(customer_phone);
         holder.tvEmail.setText(customer_email);
-
     }
 
     @Override
