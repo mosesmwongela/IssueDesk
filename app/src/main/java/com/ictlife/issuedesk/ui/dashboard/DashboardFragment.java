@@ -1,5 +1,6 @@
 package com.ictlife.issuedesk.ui.dashboard;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -77,12 +78,31 @@ public class DashboardFragment extends Fragment {
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "Clicked at index " + finalI,
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "Clicked at index " + finalI,
+//                            Toast.LENGTH_SHORT).show();
+
+                    Intent i = new Intent(getContext(), IssuesActivity.class);
+                    i.putExtra("type", "issues");
+                    i.putExtra("issue_id", String.valueOf(finalI));
+                    if (finalI == 0) {
+                        i.putExtra("issue_title", "Open issues");
+                    }
+                    if (finalI == 1) {
+                        i.putExtra("issue_title", "Ongoing issues");
+                    }
+                    if (finalI == 2) {
+                        i.putExtra("issue_title", "Follow up issues");
+                    }
+                    if (finalI == 3) {
+                        i.putExtra("issue_title", "Resolved issues");
+                    }
+                    startActivity(i);
+
                 }
             });
         }
     }
+
 
     private void getDashboardData() {
 
@@ -124,13 +144,12 @@ public class DashboardFragment extends Fragment {
                             String grandTotal = issuesReport.getString("grand_total");
 
 
-
                             if (Integer.parseInt(totalResolved) == 0 || Integer.parseInt(totalResolved) > 1) {
                                 tv_resolved.setText(totalResolved + " Resolved issues");
                             } else {
                                 tv_resolved.setText(totalResolved + " Resolved issue");
                             }
-                            
+
                             if (Integer.parseInt(totalOpen) == 0 || Integer.parseInt(totalOpen) > 1) {
                                 tv_open.setText(totalOpen + " Open issues");
                             } else {

@@ -14,6 +14,9 @@
     <color name="primary_text_color">#ff000000</color>
     <color name="secondary_text_color">#b4b4b7</color>
 
+    <color name="name_txt_color">#161d76</color>
+    <color name="time_txt_color">#64686D</color>
+
     <!--    <color name="pri9maryColor">#3a58f3</color>-->
     <!--    <color name="primaryLightColor">#7d85ff</color>-->
     <!--    <color name="primaryDarkColor">#002fbf</color>-->

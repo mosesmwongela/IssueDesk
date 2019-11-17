@@ -209,5 +209,17 @@
         <item name="android:textColor">@color/primary_text_color</item>
     </style>
 
+    <style name="TextAppearance.ictlife.QueryIssue" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/quicksand_bold</item>
+        <item name="android:textColor">@color/name_txt_color</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.ictlife.TransactionTime" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/quicksand_bold</item>
+        <item name="android:textColor">@color/time_txt_color</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
 
 </resources>

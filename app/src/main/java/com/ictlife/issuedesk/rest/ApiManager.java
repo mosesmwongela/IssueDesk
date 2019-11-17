@@ -3,6 +3,8 @@ package com.ictlife.issuedesk.rest;
 
 import com.google.gson.JsonElement;
 
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -36,6 +38,12 @@ public class ApiManager {
     //getDashBoardData
     public void getDashBoardData(String user_token, Callback<JsonElement> callback) {
         Call<JsonElement> apiCall = apiService.getDashboardData(user_token);
+        apiCall.enqueue(callback);
+    }
+
+    //getIssues
+    public void getIssues(String user_token, Map<String, String> params, Callback<JsonElement> callback) {
+        Call<JsonElement> apiCall = apiService.getIssues(user_token, params);
         apiCall.enqueue(callback);
     }
 
