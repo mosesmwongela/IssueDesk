@@ -26,25 +26,24 @@
                 android:id="@+id/vertical_bar"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/tvCreatedBy"
+                app:layout_constraintBottom_toBottomOf="@id/tvEmail"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvIssueTitle" />
+                app:layout_constraintTop_toTopOf="@id/tvCustomerName" />
 
 
             <TextView
-                android:id="@+id/tvIssueTitle"
+                android:id="@+id/tvCustomerName"
                 style="@style/TextAppearance.ictlife.QueryIssue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_medium"
                 android:layout_marginLeft="@dimen/spacing_medium"
-                app:layout_constraintEnd_toStartOf="@id/tvTime"
                 app:layout_constraintStart_toEndOf="@id/vertical_bar"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Sender ID" />
+                tools:text="Moses MWongela" />
 
             <TextView
-                android:id="@+id/tvAction"
+                android:id="@+id/tvPhone"
                 style="@style/TextAppearance.ictlife.IssueAction"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -53,13 +52,12 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_medium"
-                app:layout_constraintEnd_toStartOf="@id/tvTime"
                 app:layout_constraintStart_toEndOf="@id/vertical_bar"
-                app:layout_constraintTop_toBottomOf="@id/tvIssueTitle"
-                tools:text="Client adviced to make payment, and send the relevant registration documents." />
+                app:layout_constraintTop_toBottomOf="@id/tvCustomerName"
+                tools:text="0724784992" />
 
             <TextView
-                android:id="@+id/tvCustomer"
+                android:id="@+id/tvEmail"
                 style="@style/TextAppearance.ictlife.TransactionTags"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -67,62 +65,29 @@
                 android:layout_marginLeft="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_medium"
                 app:layout_constraintStart_toEndOf="@id/vertical_bar"
-                app:layout_constraintTop_toBottomOf="@id/tvAction"
-                tools:text="Customer: Nimble" />
+                app:layout_constraintTop_toBottomOf="@id/tvPhone"
+                tools:text="moses1889@gmail.com" />
 
-            <TextView
-                android:id="@+id/tvCreatedBy"
-                style="@style/TextAppearance.ictlife.TransactionTags"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:layout_marginLeft="@dimen/spacing_medium"
-                android:layout_marginBottom="@dimen/spacing_medium"
-                app:layout_constraintStart_toEndOf="@id/vertical_bar"
-                app:layout_constraintTop_toBottomOf="@id/tvCustomer"
-                tools:text="Created by: CX team" />
-
-
-            <!--            <com.google.android.material.chip.Chip-->
-            <!--                android:id="@+id/tvChannel"-->
-            <!--                style="@style/TextAppearance.ictlife.ChipText"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="35dp"-->
-            <!--                android:text="Webchat"-->
-            <!--                android:textAlignment="center"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toEndOf="@id/tvAction"-->
-            <!--                app:layout_constraintTop_toBottomOf="@id/tvTime" />-->
-
-            <TextView
-                android:id="@+id/tvChannel"
-                style="@style/TextAppearance.ictlife.ChipText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:layout_marginLeft="@dimen/spacing_medium"
-                android:layout_marginTop="2dp"
-                android:padding="1dp"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/tvTime"
-                app:layout_constraintStart_toEndOf="@id/tvAction"
-                app:layout_constraintTop_toBottomOf="@id/tvTime"
-                tools:text="Channel: Webchat" />
-
-
-            <TextView
-                android:id="@+id/tvTime"
-                style="@style/TextAppearance.ictlife.TransactionTime"
+            <ImageView
+                android:id="@+id/call_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_medium"
-                android:layout_marginLeft="@dimen/spacing_medium"
                 android:layout_marginEnd="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
-                app:layout_constraintBottom_toBottomOf="@id/tvIssueTitle"
+                android:src="@drawable/baseline_call_24"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvIssueTitle"
-                tools:text="8:08 AM on Sat 19th" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/email_img"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="@dimen/spacing_medium"-->
+            <!--                android:layout_marginEnd="@dimen/spacing_small"-->
+            <!--                android:src="@drawable/baseline_email_24"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/call_img"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

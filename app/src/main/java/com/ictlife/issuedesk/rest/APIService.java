@@ -20,5 +20,13 @@ public interface APIService {
     Call<JsonElement> getIssues(@Header("Authorization") String user_token,
                                 @QueryMap Map<String, String> params);
 
+    //customers data
+    @GET("/issue_tracking/customers")
+    Call<JsonElement> getCustomers(@Header("Authorization") String user_token);
+
+    //users data
+    @GET("/issue_tracking/users")
+    Call<JsonElement> getUsers(@Header("Authorization") String user_token);
+
 
 }

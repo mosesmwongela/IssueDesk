@@ -33,11 +33,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/appbar"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/trans_recycler_view"
+            android:id="@+id/issues_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="false"

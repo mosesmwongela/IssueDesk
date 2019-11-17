@@ -167,6 +167,18 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="TextAppearance.ictlife.NavHeader" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/quicksand_bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.ictlife.NavSubHeader" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/quicksand_bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="TextAppearance.ictlife.AppBarSubTitle" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/quicksand_bold</item>
         <item name="android:textColor">#f7f9fd</item>
@@ -186,6 +198,11 @@
         <item name="android:textSize">8sp</item>
     </style>
 
+    <style name="TextAppearance.ictlife.ChipText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/quicksand_bold</item>
+        <item name="android:textColor">#64686D</item>
+        <item name="android:textSize">10sp</item>
+    </style>
 
     <style name="TextAppearance.ictlife.Overline" parent="TextAppearance.MaterialComponents.Overline">
         <item name="fontFamily">@font/quicksand_regular</item>
@@ -219,6 +236,12 @@
         <item name="fontFamily">@font/quicksand_bold</item>
         <item name="android:textColor">@color/time_txt_color</item>
         <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.ictlife.IssueAction" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/quicksand_bold</item>
+        <item name="android:textColor">@color/time_txt_color</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
 

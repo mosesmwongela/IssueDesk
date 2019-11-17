@@ -5,27 +5,38 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.gson.JsonElement;
 import com.ictlife.issuedesk.IssueDeskApplication;
 import com.ictlife.issuedesk.R;
+import com.ictlife.issuedesk.ui.dashboard.entity.Issue;
 import com.ictlife.issuedesk.util.PrefManager;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.ictlife.issuedesk.util.Util.formatISODate;
+import static com.ictlife.issuedesk.util.Util.formatISOTime;
+import static com.ictlife.issuedesk.util.Util.generalFormatDateTime;
 
 public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -33,6 +44,9 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
     private SweetAlertDialog pDialog;
     private PrefManager prefManager;
     private SwipeRefreshLayout swipe_refresh_layout;
+    private List<Issue> issues = new ArrayList<>();
+    private RecyclerView issues_rv;
+    private RecyclerView.Adapter issueAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +58,26 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
         swipe_refresh_layout = findViewById(R.id.swipe_refresh_layout);
         swipe_refresh_layout.setOnRefreshListener(this);
 
+        issueAdapter = new IssueAdapter(this, issues);
+
+        issues_rv = findViewById(R.id.issues_rv);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        issues_rv.setLayoutManager(layoutManager);
+        issues_rv.setItemAnimator(new DefaultItemAnimator());
+        issues_rv.setHasFixedSize(true);
+        issues_rv.setItemViewCacheSize(300);
+        issues_rv.setDrawingCacheEnabled(true);
+        issues_rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        issues_rv.setNestedScrollingEnabled(false);
+
+        issues_rv.setAdapter(issueAdapter);
+
         Intent intent = getIntent();
 
         try {
             String type = intent.getExtras().getString("type");
             String issue_id = intent.getExtras().getString("issue_id");
-
 
             //get issue data
             if (type.equalsIgnoreCase("issues")) {
@@ -68,6 +96,9 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
     }
 
     private void fetchIssues(String issue_id) {
+
+        issues.clear();
+
         showDialog();
 
         String user_token = "Bearer " + prefManager.getUserToken();
@@ -116,8 +147,16 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
                                 String action = issue.getString("action");
                                 String created_by = issue.getString("created_by");
 
+                                String fomartedTime = generalFormatDateTime(formatISOTime(date_created), formatISODate(date_created));
+
+                                Issue is = new Issue(id, fomartedTime, date_updated, customer_id, channel_id, query_issue, issue_details, assigned_to, status_id, action, created_by);
+
+                                issues.add(is);
+
                                 Log.e(TAG, "query_issue: " + query_issue);
                             }
+
+                            issueAdapter.notifyDataSetChanged();
 
 //                            JSONObject issuesReport = jsonResponse.getJSONObject("issues_report");
 

@@ -8,31 +8,34 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/baseline_dashboard_24"
             android:title="@string/menu_home" />
+
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_customers"
+            android:icon="@drawable/baseline_supervised_user_circle_24"
+            android:title="@string/menu_customers" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_users"
+            android:icon="@drawable/baseline_verified_user_24"
+            android:title="@string/menu_users" />
+
+        <!--        <item-->
+        <!--            android:id="@+id/nav_tools"-->
+        <!--            android:icon="@drawable/ic_menu_manage"-->
+        <!--            android:title="@string/menu_tools" />-->
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
+<!--    <item android:title="">-->
+    <!--        <menu>-->
+    <!--            <item-->
+    <!--                android:id="@+id/nav_logout"-->
+    <!--                android:icon="@drawable/baseline_arrow_back_ios_24"-->
+    <!--                android:title="@string/menu_logout" />-->
+    <!--            &lt;!&ndash;            <item&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:id="@+id/nav_send"&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:icon="@drawable/ic_menu_send"&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:title="@string/menu_send" />&ndash;&gt;-->
+    <!--        </menu>-->
+    <!--    </item>-->
 
 </menu>

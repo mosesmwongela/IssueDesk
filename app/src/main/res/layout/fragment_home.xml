@@ -231,8 +231,112 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-
     </GridLayout>
 
+<!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="4dp"-->
+    <!--        android:layout_marginTop="4dp"-->
+    <!--        android:backgroundTint="@color/colorPrimaryDark" />-->
 
+    <!--    <GridLayout-->
+    <!--        android:id="@+id/bottomGrid"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="3"-->
+    <!--        android:alignmentMode="alignMargins"-->
+    <!--        android:animateLayoutChanges="true"-->
+    <!--        android:background="@android:color/transparent"-->
+    <!--        android:columnCount="2"-->
+    <!--        android:columnOrderPreserved="false"-->
+    <!--        android:padding="14dp"-->
+    <!--        android:rowCount="1">-->
+
+    <!--        &lt;!&ndash; ROW 1  &ndash;&gt;-->
+    <!--        &lt;!&ndash; COLUMN 1  &ndash;&gt;-->
+
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_rowWeight="1"-->
+    <!--            android:layout_columnWeight="1"-->
+    <!--            android:layout_marginLeft="16dp"-->
+    <!--            android:layout_marginRight="16dp"-->
+    <!--            android:layout_marginBottom="16dp"-->
+    <!--            app:cardCornerRadius="8dp"-->
+    <!--            app:cardElevation="8dp">-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_gravity="center_horizontal|center_vertical"-->
+    <!--                android:layout_margin="16dp"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/customer_img"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="80dp"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:src="@drawable/open" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/tv_customer"-->
+    <!--                    style="@style/TextAppearance.ictlife.IssueTitle"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@id/customer_img"-->
+    <!--                    android:layout_centerHorizontal="true"-->
+    <!--                    android:layout_marginTop="8dp"-->
+    <!--                    android:text="Customers"-->
+    <!--                    android:textAlignment="center" />-->
+
+    <!--            </RelativeLayout>-->
+
+    <!--        </androidx.cardview.widget.CardView>-->
+
+    <!--        &lt;!&ndash; COLUMN 2  &ndash;&gt;-->
+
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_rowWeight="1"-->
+    <!--            android:layout_columnWeight="1"-->
+    <!--            android:layout_marginLeft="16dp"-->
+    <!--            android:layout_marginRight="16dp"-->
+    <!--            android:layout_marginBottom="16dp"-->
+    <!--            app:cardCornerRadius="8dp"-->
+    <!--            app:cardElevation="8dp">-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_gravity="center_horizontal|center_vertical"-->
+    <!--                android:layout_margin="16dp"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/users_img"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="80dp"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:src="@drawable/ongoing" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/tv_users"-->
+    <!--                    style="@style/TextAppearance.ictlife.IssueTitle"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@id/users_img"-->
+    <!--                    android:layout_centerHorizontal="true"-->
+    <!--                    android:layout_marginTop="8dp"-->
+    <!--                    android:text="CX team"-->
+    <!--                    android:textAlignment="center" />-->
+
+    <!--            </RelativeLayout>-->
+
+    <!--        </androidx.cardview.widget.CardView>-->
+
+
+    <!--    </GridLayout>-->
 </LinearLayout>

@@ -1,16 +1,16 @@
-package com.ictlife.issuedesk.ui.slideshow;
+package com.ictlife.issuedesk.ui.customer;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class CUstomerViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public CUstomerViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is gallery fragment");
     }
 
     public LiveData<String> getText() {

@@ -12,32 +12,32 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.ictlife.issuedesk.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_customers"
+        android:name="com.ictlife.issuedesk.ui.customer.CustomerFragment"
+        android:label="@string/menu_customers"
+        tools:layout="@layout/fragment_customer" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.ictlife.issuedesk.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_users"
+        android:name="com.ictlife.issuedesk.ui.user.UserFragment"
+        android:label="@string/menu_users"
+        tools:layout="@layout/fragment_user" />
 
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.ictlife.issuedesk.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+    <!--    <fragment-->
+    <!--        android:id="@+id/nav_tools"-->
+    <!--        android:name="com.ictlife.issuedesk.ui.tools.ToolsFragment"-->
+    <!--        android:label="@string/menu_tools"-->
+    <!--        tools:layout="@layout/fragment_tools" />-->
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.ictlife.issuedesk.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+    <!--    <fragment-->
+    <!--        android:id="@+id/nav_share"-->
+    <!--        android:name="com.ictlife.issuedesk.ui.share.ShareFragment"-->
+    <!--        android:label="@string/menu_share"-->
+    <!--        tools:layout="@layout/fragment_share" />-->
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.ictlife.issuedesk.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+    <!--    <fragment-->
+    <!--        android:id="@+id/nav_send"-->
+    <!--        android:name="com.ictlife.issuedesk.ui.send.SendFragment"-->
+    <!--        android:label="@string/menu_send"-->
+    <!--        tools:layout="@layout/fragment_send" />-->
 </navigation>

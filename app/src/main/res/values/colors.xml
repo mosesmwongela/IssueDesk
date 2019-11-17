@@ -17,6 +17,13 @@
     <color name="name_txt_color">#161d76</color>
     <color name="time_txt_color">#64686D</color>
 
+    <color name="channel_1">#64686D</color>
+    <color name="channel_2">#64686D</color>
+    <color name="channel_3">#64686D</color>
+    <color name="channel_4">#64686D</color>
+    <color name="channel_5">#64686D</color>
+    <color name="channel_6">#64686D</color>
+
     <!--    <color name="pri9maryColor">#3a58f3</color>-->
     <!--    <color name="primaryLightColor">#7d85ff</color>-->
     <!--    <color name="primaryDarkColor">#002fbf</color>-->

@@ -47,4 +47,16 @@ public class ApiManager {
         apiCall.enqueue(callback);
     }
 
+    //get customers
+    public void getCustomers(String user_token, Callback<JsonElement> callback) {
+        Call<JsonElement> apiCall = apiService.getCustomers(user_token);
+        apiCall.enqueue(callback);
+    }
+
+    //get users
+    public void getUsers(String user_token, Callback<JsonElement> callback) {
+        Call<JsonElement> apiCall = apiService.getUsers(user_token);
+        apiCall.enqueue(callback);
+    }
+
 }
