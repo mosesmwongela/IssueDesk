@@ -37,6 +37,9 @@
         <activity
             android:name=".ui.create.issue.CreateIssueActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.create.user.CreateUserActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 
 </manifest>

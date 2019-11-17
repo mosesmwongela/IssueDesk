@@ -50,4 +50,6 @@ dependencies {
 
     implementation project(':sweetalert')
 
+    implementation project(':countrycodepicker')
+
 }

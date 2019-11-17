@@ -3,6 +3,7 @@ package com.ictlife.issuedesk.rest;
 
 import com.google.gson.JsonElement;
 import com.ictlife.issuedesk.ui.create.issue.Issue;
+import com.ictlife.issuedesk.ui.create.user.User;
 
 import java.util.Map;
 
@@ -63,6 +64,12 @@ public class ApiManager {
     //create_issue
     public void createIssue(String user_token, Issue issue, Callback<JsonElement> callback) {
         Call<JsonElement> apiCall = apiService.createIssue(user_token, issue);
+        apiCall.enqueue(callback);
+    }
+
+    //create user
+    public void createUser(String user_token, User user, Callback<JsonElement> callback) {
+        Call<JsonElement> apiCall = apiService.createUser(user_token, user);
         apiCall.enqueue(callback);
     }
 

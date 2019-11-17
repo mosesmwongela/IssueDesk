@@ -2,6 +2,7 @@ package com.ictlife.issuedesk.rest;
 
 import com.google.gson.JsonElement;
 import com.ictlife.issuedesk.ui.create.issue.Issue;
+import com.ictlife.issuedesk.ui.create.user.User;
 
 import java.util.Map;
 
@@ -34,6 +35,10 @@ public interface APIService {
     //create issue
     @POST("/issue_tracking/issues")
     Call<JsonElement> createIssue(@Header("Authorization") String user_token, @Body Issue issue);
+
+    //create user
+    @POST("/issue_tracking/users")
+    Call<JsonElement> createUser(@Header("Authorization") String user_token, @Body User user);
 
 
 }

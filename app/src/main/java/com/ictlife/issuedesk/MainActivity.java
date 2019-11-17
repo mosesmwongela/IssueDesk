@@ -2,6 +2,7 @@ package com.ictlife.issuedesk;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.ictlife.issuedesk.ui.auth.LoginActivity;
 import com.ictlife.issuedesk.ui.create.issue.CreateIssueActivity;
+import com.ictlife.issuedesk.ui.create.user.CreateUserActivity;
 import com.ictlife.issuedesk.util.PrefManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -77,10 +79,24 @@ public class MainActivity extends AppCompatActivity {
 
         String currentFrag = navController.getCurrentDestination().getLabel().toString();
 
+        Log.e(TAG, "currentFrag: " + currentFrag);
+
         if (currentFrag.equalsIgnoreCase("Dashboard")) {
             //create a CX issue
             Intent loginIntent = new Intent(MainActivity.this, CreateIssueActivity.class);
             startActivity(loginIntent);
+        }
+
+        if (currentFrag.equalsIgnoreCase("Users")) {
+            //create a CX user
+            Intent loginIntent = new Intent(MainActivity.this, CreateUserActivity.class);
+            startActivity(loginIntent);
+        }
+
+        if (currentFrag.equalsIgnoreCase("Customers")) {
+//            //create a CX issue
+//            Intent loginIntent = new Intent(MainActivity.this, CreateIssueActivity.class);
+//            startActivity(loginIntent);
         }
     }
 
