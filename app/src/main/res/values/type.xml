@@ -154,6 +154,12 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="TextAppearance.ictlife.IssueNumber" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/eczar</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
     <style name="TextAppearance.ictlife.IssueTitle" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/quicksand_bold</item>
