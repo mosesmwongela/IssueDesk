@@ -1,9 +1,11 @@
 package com.ictlife.issuedesk.ui.auth;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,9 +18,13 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.ictlife.issuedesk.MainActivity;
 import com.ictlife.issuedesk.R;
 import com.ictlife.issuedesk.util.PrefManager;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -138,16 +144,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private class PostResponse {
-        @SerializedName("id")
+        @SerializedName("token")
         @Expose
-        private String auth;
+        private String token;
 
-        public String getAuth() {
-            return auth;
+        @SerializedName("user")
+        @Expose
+        private String user;
+
+        public String getUser() {
+            return user;
         }
 
-        public void setId(String auth) {
-            this.auth = auth;
+        public void setUser(String user) {
+            this.user = user;
+        }
+
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
         }
     }
 
@@ -227,8 +245,27 @@ public class LoginActivity extends AppCompatActivity {
                 //hiding progress dialog
                 pDialog.dismiss();
                 if (response.isSuccessful()) {
-                    prefManager.setLoggedIn(true);
+                    try {
+                        String userToken = response.body().getToken();
+                        JSONObject user = new JSONObject(response.body().getUser());
+
+                        String user_name = user.getString("name");
+                        String phone = user.getString("phone");
+                        String email = user.getString("email");
+
+                        Log.e(TAG, "Name: " + user_name + " Phone: " + phone + " Email: " + email);
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                    // prefManager.setLoggedIn(true);
                     // Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
+                    finish();
                 } else {
                     prefManager.setLoggedIn(false);
                     password_text_input.setError("Wrong username and/or password");
@@ -239,6 +276,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<PostResponse> call, Throwable t) {
                 pDialog.dismiss();
+                Log.e(TAG, t.getMessage());
                 // Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 Toast.makeText(getApplicationContext(), "Server error", Toast.LENGTH_LONG).show();
             }

@@ -15,10 +15,41 @@ public class PrefManager {
 
     private static final String IS_LOGGED_IN = "IsUserLoggedIn";
 
+    private static final String USER_TOKEN = "token";
+    private static final String USER_FULL_NAME = "full_name";
+    private static final String USER_EMAIL = "user_email";
+
     public PrefManager(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
+    }
+
+    public void setUserToken(String token) {
+        editor.putString(USER_TOKEN, token);
+        editor.commit();
+    }
+
+    public String getUserToken() {
+        return pref.getString(USER_TOKEN, null);
+    }
+
+    public void setUserEmail(String email) {
+        editor.putString(USER_EMAIL, email);
+        editor.commit();
+    }
+
+    public String getUserEmail() {
+        return pref.getString(USER_EMAIL, null);
+    }
+
+    public void setUserFullName(String fullName) {
+        editor.putString(USER_FULL_NAME, fullName);
+        editor.commit();
+    }
+
+    public String getUserFullName() {
+        return pref.getString(USER_FULL_NAME, null);
     }
 
     public void setLoggedIn(boolean isLoggedIn) {
