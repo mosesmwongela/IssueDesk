@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.ictlife.issuedesk.MainActivity;
@@ -23,7 +24,6 @@ import com.ictlife.issuedesk.R;
 import com.ictlife.issuedesk.util.PrefManager;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private interface ApiService {
         @GET("issue_tracking/authenticate")
-        Call<PostResponse> loginData();
+        Call<JsonElement> loginData();
     }
 
     private class PostResponse {
@@ -237,29 +237,35 @@ public class LoginActivity extends AppCompatActivity {
 
         //Defining retrofit api service
         ApiService loginService = ServiceGenerator.createService(ApiService.class, username, password);
-        Call<PostResponse> call = loginService.loginData();
+        Call<JsonElement> call = loginService.loginData();
         //calling the api
-        call.enqueue(new Callback<PostResponse>() {
+        call.enqueue(new Callback<JsonElement>() {
             @Override
-            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                 //hiding progress dialog
                 pDialog.dismiss();
                 if (response.isSuccessful()) {
                     try {
-                        String userToken = response.body().getToken();
-                        JSONObject user = new JSONObject(response.body().getUser());
 
+                        JSONObject jsonResponse = new JSONObject(response.body().toString());
+
+                        String userToken = jsonResponse.getString("token");
+
+                        JSONObject user = jsonResponse.getJSONObject("user");
                         String user_name = user.getString("name");
                         String phone = user.getString("phone");
                         String email = user.getString("email");
 
-                        Log.e(TAG, "Name: " + user_name + " Phone: " + phone + " Email: " + email);
+                        prefManager.setLoggedIn(true);
+                        prefManager.setUserEmail(email);
+                        prefManager.setUserFullName(user_name);
+                        prefManager.setUserToken(userToken);
 
+                        //     Log.e(TAG, "userToken: " + userToken + " Name: " + user_name + " Phone: " + phone + " Email: " + email);
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
 
                     // prefManager.setLoggedIn(true);
                     // Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
@@ -274,7 +280,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<PostResponse> call, Throwable t) {
+            public void onFailure(Call<JsonElement> call, Throwable t) {
                 pDialog.dismiss();
                 Log.e(TAG, t.getMessage());
                 // Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
