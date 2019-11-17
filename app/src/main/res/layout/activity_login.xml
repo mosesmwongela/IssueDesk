@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
+    android:orientation="vertical"
     tools:context=".ui.auth.LoginActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
@@ -17,13 +19,13 @@
         android:paddingTop="16dp">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
-            android:tint="?android:attr/textColorPrimary"
-            app:srcCompat="@drawable/channel_bg" />
+            android:layout_marginBottom="48dp"
+            android:tint="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/issue_desk_cropped" />
 
         <TextView
             style="@style/TextAppearance.ictlife.Headline5a"
@@ -31,7 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
-            android:text="Issue Desk" />
+            android:text="Issue Desk"
+            android:visibility="gone" />
 
         <!-- Snippet from "Add text fields" section goes here. -->
 
@@ -41,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:hint="@string/shr_hint_username"
+            android:hint="Email"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -101,4 +104,6 @@
         </RelativeLayout>
 
     </LinearLayout>
-</ScrollView>
+
+
+</LinearLayout>

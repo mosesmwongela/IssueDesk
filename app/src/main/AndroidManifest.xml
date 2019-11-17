@@ -30,6 +30,7 @@
         </activity>
         <activity
             android:name=".ui.auth.LoginActivity"
+            android:theme="@style/Login.AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.dashboard.IssuesActivity"
@@ -39,6 +40,9 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.create.user.CreateUserActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.create.customer.CreateCustomerActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 

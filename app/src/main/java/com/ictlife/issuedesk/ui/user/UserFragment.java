@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,9 +18,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.gson.JsonElement;
 import com.ictlife.issuedesk.IssueDeskApplication;
 import com.ictlife.issuedesk.R;
-import com.ictlife.issuedesk.ui.customer.CUstomerViewModel;
-import com.ictlife.issuedesk.ui.customer.Customer;
-import com.ictlife.issuedesk.ui.customer.CustomerAdapter;
 import com.ictlife.issuedesk.util.PrefManager;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -164,10 +160,16 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#002fbf"));
         pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
     }
 
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        fetchUser();
+//    }
 
     @Override
     public void onRefresh() {

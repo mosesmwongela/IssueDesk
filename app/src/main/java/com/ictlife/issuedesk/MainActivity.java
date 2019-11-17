@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.ictlife.issuedesk.ui.auth.LoginActivity;
+import com.ictlife.issuedesk.ui.create.customer.CreateCustomerActivity;
 import com.ictlife.issuedesk.ui.create.issue.CreateIssueActivity;
 import com.ictlife.issuedesk.ui.create.user.CreateUserActivity;
 import com.ictlife.issuedesk.util.PrefManager;
@@ -94,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (currentFrag.equalsIgnoreCase("Customers")) {
-//            //create a CX issue
-//            Intent loginIntent = new Intent(MainActivity.this, CreateIssueActivity.class);
-//            startActivity(loginIntent);
+            //create a customer
+            Intent loginIntent = new Intent(MainActivity.this, CreateCustomerActivity.class);
+            startActivity(loginIntent);
         }
     }
 

@@ -267,8 +267,8 @@ public class CreateIssueActivity extends AppCompatActivity {
     private void showSuccess() {
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#002fbf"));
-        pDialog.setTitleText("Issue created successfully");
-        pDialog.setCancelable(false);
+        pDialog.setTitleText("User created successfully");
+        pDialog.setCancelable(true);
         pDialog.show();
 
     }
@@ -283,7 +283,7 @@ public class CreateIssueActivity extends AppCompatActivity {
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#002fbf"));
         pDialog.setTitleText(string);
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
     }
 
@@ -291,7 +291,7 @@ public class CreateIssueActivity extends AppCompatActivity {
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#002fbf"));
         pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
     }
 

@@ -171,9 +171,15 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
         pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#002fbf"));
         pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        fetchCustomer();
+//    }
 
 
     @Override

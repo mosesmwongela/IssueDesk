@@ -1,4 +1,4 @@
-package com.ictlife.issuedesk.ui.create.user;
+package com.ictlife.issuedesk.ui.create.customer;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonElement;
 import com.ictlife.issuedesk.IssueDeskApplication;
 import com.ictlife.issuedesk.R;
+import com.ictlife.issuedesk.ui.create.user.User;
 import com.ictlife.issuedesk.util.ConnectionDetector;
 import com.ictlife.issuedesk.util.PrefManager;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
@@ -32,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateUserActivity extends AppCompatActivity {
+public class CreateCustomerActivity extends AppCompatActivity {
 
     private static final String TAG = "CreateUserActivity";
     private TextInputEditText ti_customer_id;
@@ -55,7 +56,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Create User");
+        toolbar.setTitle("Create Customer");
 
         connectionDetector = new ConnectionDetector(this);
         prefManager = new PrefManager(this);
@@ -83,7 +84,6 @@ public class CreateUserActivity extends AppCompatActivity {
                 createUser();
             }
         });
-
 
     }
 
@@ -157,7 +157,7 @@ public class CreateUserActivity extends AppCompatActivity {
         hideKeyboard();
 
 
-        User user = new User(full_name, phoneNumber, email, password, 1);
+        User user = new User(full_name, phoneNumber, email, password, 2);
 
         showLoading();
 
@@ -202,7 +202,7 @@ public class CreateUserActivity extends AppCompatActivity {
     private void showSuccess() {
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#002fbf"));
-        pDialog.setTitleText("Issue created successfully");
+        pDialog.setTitleText("Customer created successfully");
         pDialog.setCancelable(true);
         pDialog.show();
 
@@ -293,4 +293,6 @@ public class CreateUserActivity extends AppCompatActivity {
             return false;
         }
     }
+
+
 }

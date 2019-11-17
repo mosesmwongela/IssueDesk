@@ -202,7 +202,7 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#002fbf"));
         pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
     }
 
