@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shr_login_fragment);
+        setContentView(R.layout.activity_login);
 
         prefManager = new PrefManager(this);
 
@@ -77,6 +77,13 @@ public class LoginActivity extends AppCompatActivity {
 
         next_button = findViewById(R.id.next_button);
         cancel_button = findViewById(R.id.cancel_button);
+
+        cancel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         // Set an error if the password is less than 8 characters.
         next_button.setOnClickListener(new View.OnClickListener() {

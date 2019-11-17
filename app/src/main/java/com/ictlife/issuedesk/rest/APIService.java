@@ -1,12 +1,15 @@
 package com.ictlife.issuedesk.rest;
 
 import com.google.gson.JsonElement;
+import com.ictlife.issuedesk.ui.create.issue.Issue;
 
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
 public interface APIService {
@@ -27,6 +30,10 @@ public interface APIService {
     //users data
     @GET("/issue_tracking/users")
     Call<JsonElement> getUsers(@Header("Authorization") String user_token);
+
+    //create issue
+    @POST("/issue_tracking/issues")
+    Call<JsonElement> createIssue(@Header("Authorization") String user_token, @Body Issue issue);
 
 
 }

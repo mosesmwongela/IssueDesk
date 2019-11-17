@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
-    tools:context=".ui.auth.LoginFragment">
+    tools:context=".ui.auth.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="16dp"
             android:tint="?android:attr/textColorPrimary"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:srcCompat="@drawable/channel_bg" />
 
         <TextView
             style="@style/TextAppearance.ictlife.Headline5a"
@@ -48,7 +48,7 @@
                 android:id="@+id/id_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
+                android:fontFamily="@font/quicksand_regular"
                 android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,7 +67,7 @@
                 android:id="@+id/password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_bold"
+                android:fontFamily="@font/quicksand_regular"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 

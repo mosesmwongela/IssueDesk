@@ -64,7 +64,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
 
         holder.tvIssueTitle.setText(issue.getQuery_issue());
         holder.tvAction.setText(issue.getAction());
-        holder.tvCustomer.setText(issue.getCustomer_id());
+        holder.tvCustomer.setText(issue.getCustomer_email());
         holder.tvCreatedBy.setText(issue.getCreated_by());
         holder.tvTime.setText(issue.getDate_created());
 

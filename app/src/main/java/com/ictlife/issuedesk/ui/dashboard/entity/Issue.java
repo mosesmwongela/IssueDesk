@@ -14,11 +14,14 @@ public class Issue {
     String status_id;
     String action;
     String created_by;
+    String customer_email;
 
     public Issue() {
     }
 
-    public Issue(String id, String date_created, String date_updated, String customer_id, String channel_id, String query_issue, String issue_details, String assigned_to, String status_id, String action, String created_by) {
+    public Issue(String id, String date_created, String date_updated, String customer_id,
+                 String channel_id, String query_issue, String issue_details, String assigned_to,
+                 String status_id, String action, String created_by, String customer_email) {
         this.id = id;
         this.date_created = date_created;
         this.date_updated = date_updated;
@@ -30,6 +33,15 @@ public class Issue {
         this.status_id = status_id;
         this.action = action;
         this.created_by = created_by;
+        this.customer_email = customer_email;
+    }
+
+    public String getCustomer_email() {
+        return customer_email;
+    }
+
+    public void setCustomer_email(String customer_email) {
+        this.customer_email = customer_email;
     }
 
     public String getId() {

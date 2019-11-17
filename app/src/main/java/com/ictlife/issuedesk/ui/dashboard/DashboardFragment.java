@@ -114,7 +114,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
 
-                Log.e(TAG, "onResponse: " + response.toString());
+              //  Log.e(TAG, "onResponse: " + response.toString());
                 hidepDialog();
                 if (!response.isSuccessful()) {
                     try {
@@ -128,7 +128,7 @@ public class DashboardFragment extends Fragment {
                 } else {
 
                     JsonElement responseUser = response.body();
-                    Log.e(TAG, "onResponse: " + responseUser.toString());
+                  //  Log.e(TAG, "onResponse: " + responseUser.toString());
 
                     if (responseUser != null) {
 

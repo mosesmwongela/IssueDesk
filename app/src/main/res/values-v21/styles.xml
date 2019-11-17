@@ -23,7 +23,7 @@
         <item name="hintTextAppearance">@style/TextAppearance.Shrine.TextInputLayout.HintText</item>
         <item name="hintTextColor">@color/textColorPrimary</item>
         <item name="android:paddingBottom">8dp</item>
-        <item name="fontFamily">@font/quicksand_bold</item>
+        <item name="fontFamily">@font/quicksand_regular</item>
         <item name="boxStrokeColor">@color/textInputOutlineColor</item>
     </style>
 

@@ -79,6 +79,8 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
             String type = intent.getExtras().getString("type");
             String issue_id = intent.getExtras().getString("issue_id");
 
+            Log.e(TAG, "ISSUE ID: "+issue_id);
+
             //get issue data
             if (type.equalsIgnoreCase("issues")) {
                 String issue_title = intent.getExtras().getString("issue_title");
@@ -146,10 +148,11 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
                                 String status_id = issue.getString("status_id");
                                 String action = issue.getString("action");
                                 String created_by = issue.getString("created_by");
+                                String customer_email = issue.getString("customer_email");
 
                                 String fomartedTime = generalFormatDateTime(formatISOTime(date_created), formatISODate(date_created));
 
-                                Issue is = new Issue(id, fomartedTime, date_updated, customer_id, channel_id, query_issue, issue_details, assigned_to, status_id, action, created_by);
+                                Issue is = new Issue(id, fomartedTime, date_updated, customer_id, channel_id, query_issue, issue_details, assigned_to, status_id, action, created_by, customer_email);
 
                                 issues.add(is);
 

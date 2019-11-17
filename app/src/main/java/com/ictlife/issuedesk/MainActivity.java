@@ -18,14 +18,16 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.ictlife.issuedesk.ui.auth.LoginActivity;
+import com.ictlife.issuedesk.ui.create.issue.CreateIssueActivity;
 import com.ictlife.issuedesk.util.PrefManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private AppBarConfiguration mAppBarConfiguration;
     private PrefManager prefManager;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                createAnEntity();
             }
         });
 
@@ -60,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_customers, R.id.nav_users)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -69,6 +71,17 @@ public class MainActivity extends AppCompatActivity {
         TextView navUserEmail = (TextView) headerView.findViewById(R.id.nav_user_email);
         navUsername.setText(prefManager.getUserFullName());
         navUserEmail.setText(prefManager.getUserEmail());
+    }
+
+    private void createAnEntity() {
+
+        String currentFrag = navController.getCurrentDestination().getLabel().toString();
+
+        if (currentFrag.equalsIgnoreCase("Dashboard")) {
+            //create a CX issue
+            Intent loginIntent = new Intent(MainActivity.this, CreateIssueActivity.class);
+            startActivity(loginIntent);
+        }
     }
 
     @Override
