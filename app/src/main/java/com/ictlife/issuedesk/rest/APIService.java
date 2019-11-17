@@ -9,7 +9,7 @@ import retrofit2.http.Header;
 public interface APIService {
 
     //dashboard data
-    @GET("/issue_tracking/dashboard/")
+    @GET("/issue_tracking/dashboard")
     Call<JsonElement> getDashboardData(@Header("Authorization") String user_token);
 
 

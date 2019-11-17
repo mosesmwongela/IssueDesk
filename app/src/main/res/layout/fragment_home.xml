@@ -89,6 +89,7 @@
                     android:src="@drawable/open" />
 
                 <TextView
+                    android:id="@+id/tv_open"
                     style="@style/TextAppearance.ictlife.IssueTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,6 +131,7 @@
                     android:src="@drawable/ongoing" />
 
                 <TextView
+                    android:id="@+id/tv_ongoing"
                     style="@style/TextAppearance.ictlife.IssueTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,6 +175,7 @@
                     android:src="@drawable/follow" />
 
                 <TextView
+                    android:id="@+id/tv_follow"
                     style="@style/TextAppearance.ictlife.IssueTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -215,6 +218,7 @@
                     android:src="@drawable/resolved" />
 
                 <TextView
+                    android:id="@+id/tv_resolved"
                     style="@style/TextAppearance.ictlife.IssueTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

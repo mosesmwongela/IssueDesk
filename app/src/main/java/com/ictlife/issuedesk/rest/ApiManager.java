@@ -1,6 +1,10 @@
 package com.ictlife.issuedesk.rest;
 
 
+import com.google.gson.JsonElement;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -27,6 +31,12 @@ public class ApiManager {
             apiManager = new ApiManager();
         }
         return apiManager;
+    }
+
+    //getDashBoardData
+    public void getDashBoardData(String user_token, Callback<JsonElement> callback) {
+        Call<JsonElement> apiCall = apiService.getDashboardData(user_token);
+        apiCall.enqueue(callback);
     }
 
 }
