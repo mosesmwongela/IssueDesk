@@ -343,7 +343,7 @@ public class CreateIssueActivity extends AppCompatActivity {
                         Log.e(TAG, "onResponse: " + responseUser.toString());
                         if (responseUser != null) {
 
-                            showSuccess();
+                          //  showSuccess();
                             finish();
 
                         } else {
@@ -379,7 +379,7 @@ public class CreateIssueActivity extends AppCompatActivity {
                         Log.e(TAG, "onResponse: " + responseUser.toString());
                         if (responseUser != null) {
 
-                            showSuccess();
+                           // showSuccess();
                             finish();
 
                         } else {

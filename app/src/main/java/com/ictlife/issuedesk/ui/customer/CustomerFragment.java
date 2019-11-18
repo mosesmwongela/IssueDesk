@@ -53,6 +53,9 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
     private RecyclerView customer_rv;
     private RecyclerView.Adapter customerAdapter;
 
+    private Boolean isFetchingData = false;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         CUstomerViewModel =
@@ -124,8 +127,19 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchCustomer();
+    }
 
     private void fetchCustomer() {
+
+        if (isFetchingData) {
+            return;
+        }
+
+        isFetchingData = true;
 
         customers.clear();
 
@@ -139,6 +153,7 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
 
                 Log.e(TAG, "onResponse: " + response.toString());
                 hidepDialog();
+                isFetchingData = false;
                 if (!response.isSuccessful()) {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());

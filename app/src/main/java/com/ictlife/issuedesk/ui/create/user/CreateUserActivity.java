@@ -107,8 +107,7 @@ public class CreateUserActivity extends AppCompatActivity {
     }
 
     static boolean isEmailValid(String email) {
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        return email.matches(regex);
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private void createUser() {
@@ -181,7 +180,7 @@ public class CreateUserActivity extends AppCompatActivity {
                     Log.e(TAG, "onResponse: " + responseUser.toString());
                     if (responseUser != null) {
 
-                        showSuccess();
+                        //showSuccess();
                         finish();
 
                     } else {

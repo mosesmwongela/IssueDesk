@@ -52,6 +52,7 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private RecyclerView.Adapter userAdapter;
 
     private onClickInterface onclickInterface;
+    private boolean isFetchingData = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
             @Override
             public void setIssueClick(int position) {
-                
+
             }
         };
 
@@ -116,6 +117,12 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private void fetchUser() {
 
+        if (isFetchingData) {
+            return;
+        }
+
+        isFetchingData = true;
+
         users.clear();
 
         showDialog();
@@ -128,6 +135,7 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 Log.e(TAG, "onResponse: " + response.toString());
                 hidepDialog();
+                isFetchingData = false;
                 if (!response.isSuccessful()) {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
