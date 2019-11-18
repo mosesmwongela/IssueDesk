@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 public interface APIService {
@@ -35,6 +36,10 @@ public interface APIService {
     //create issue
     @POST("/issue_tracking/issues")
     Call<JsonElement> createIssue(@Header("Authorization") String user_token, @Body Issue issue);
+
+    //Edit issue
+    @POST("/issue_tracking/issues/{issue_id}")
+    Call<JsonElement> editIssue(@Header("Authorization") String user_token, @Body Issue issue, @Path("issue_id") long user_id);
 
     //create user
     @POST("/issue_tracking/users")

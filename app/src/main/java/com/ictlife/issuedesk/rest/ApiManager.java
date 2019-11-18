@@ -67,6 +67,12 @@ public class ApiManager {
         apiCall.enqueue(callback);
     }
 
+    //edit issue
+    public void editIssue(String user_token, Issue issue, int issue_id, Callback<JsonElement> callback) {
+        Call<JsonElement> apiCall = apiService.editIssue(user_token, issue, issue_id);
+        apiCall.enqueue(callback);
+    }
+
     //create user
     public void createUser(String user_token, User user, Callback<JsonElement> callback) {
         Call<JsonElement> apiCall = apiService.createUser(user_token, user);

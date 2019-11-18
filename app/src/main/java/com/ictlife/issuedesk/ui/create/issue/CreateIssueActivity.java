@@ -61,6 +61,7 @@ public class CreateIssueActivity extends AppCompatActivity {
 
     private String type = "create_issue";
     private String issue_assign_to_id;
+    int issue_id = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +120,7 @@ public class CreateIssueActivity extends AppCompatActivity {
 
             if (type != null) {
 
-                String issue_id = intent.getExtras().getString("issue_id");
+                issue_id = Integer.parseInt(intent.getExtras().getString("issue_id"));
                 String customer_email = intent.getExtras().getString("customer_email");
                 String issue_title = intent.getExtras().getString("issue_title");
                 String issue_detail = intent.getExtras().getString("issue_detail");
@@ -322,40 +323,79 @@ public class CreateIssueActivity extends AppCompatActivity {
 
         String user_token = "Bearer " + prefManager.getUserToken();
 
-        IssueDeskApplication.apiManager.createIssue(user_token, issue, new Callback<JsonElement>() {
-            @Override
-            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                hidepDialog();
+        if (type.equalsIgnoreCase("edit_issues")) {
 
-                if (!response.isSuccessful()) {
-                    try {
-                        Log.e(TAG, "error_message: " + response.toString());
+            IssueDeskApplication.apiManager.editIssue(user_token, issue, issue_id, new Callback<JsonElement>() {
+                @Override
+                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                    hidepDialog();
+
+                    if (!response.isSuccessful()) {
+                        try {
+                            Log.e(TAG, "error_message: " + response.toString());
 //                        JSONObject jObjError = new JSONObject(response.errorBody().string());
 //                        Log.e(TAG, "error_message: " + jObjError.getString("error_message") + " response code: " + response.code());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    JsonElement responseUser = response.body();
-                    Log.e(TAG, "onResponse: " + responseUser.toString());
-                    if (responseUser != null) {
-
-                        showSuccess();
-                        finish();
-
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     } else {
-                        String err = String.format("Response is %s", String.valueOf(response.code()));
-                        Log.e(TAG, "onFailure: " + err);
+                        JsonElement responseUser = response.body();
+                        Log.e(TAG, "onResponse: " + responseUser.toString());
+                        if (responseUser != null) {
+
+                            showSuccess();
+                            finish();
+
+                        } else {
+                            String err = String.format("Response is %s", String.valueOf(response.code()));
+                            Log.e(TAG, "onFailure: " + err);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<JsonElement> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.getMessage());
-            }
+                @Override
+                public void onFailure(Call<JsonElement> call, Throwable t) {
+                    Log.e(TAG, "onFailure: " + t.getMessage());
+                }
 
-        });
+            });
+
+        } else {
+            IssueDeskApplication.apiManager.createIssue(user_token, issue, new Callback<JsonElement>() {
+                @Override
+                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                    hidepDialog();
+
+                    if (!response.isSuccessful()) {
+                        try {
+                            Log.e(TAG, "error_message: " + response.toString());
+//                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+//                        Log.e(TAG, "error_message: " + jObjError.getString("error_message") + " response code: " + response.code());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        JsonElement responseUser = response.body();
+                        Log.e(TAG, "onResponse: " + responseUser.toString());
+                        if (responseUser != null) {
+
+                            showSuccess();
+                            finish();
+
+                        } else {
+                            String err = String.format("Response is %s", String.valueOf(response.code()));
+                            Log.e(TAG, "onFailure: " + err);
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonElement> call, Throwable t) {
+                    Log.e(TAG, "onFailure: " + t.getMessage());
+                }
+
+            });
+        }
     }
 
     private void showSuccess() {
