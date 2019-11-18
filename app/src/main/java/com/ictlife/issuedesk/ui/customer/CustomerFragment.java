@@ -77,6 +77,11 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
             public void setClick(String phoneNumber) {
                 actionCall(phoneNumber);
             }
+
+            @Override
+            public void setIssueClick(int position) {
+
+            }
         };
 
         customerAdapter = new CustomerAdapter(getContext(), customers, onclickInterface);

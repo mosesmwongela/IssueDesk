@@ -38,12 +38,15 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.create.issue.CreateIssueActivity"
+            android:theme="@style/MainActivity.AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.create.user.CreateUserActivity"
+            android:theme="@style/MainActivity.AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.create.customer.CreateCustomerActivity"
+            android:theme="@style/MainActivity.AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 

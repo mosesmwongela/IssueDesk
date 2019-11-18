@@ -67,6 +67,11 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             public void setClick(String phoneNumber) {
                 actionCall(phoneNumber);
             }
+
+            @Override
+            public void setIssueClick(int position) {
+                
+            }
         };
 
         userAdapter = new UserAdapter(getContext(), users, onclickInterface);

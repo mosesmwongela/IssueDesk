@@ -91,10 +91,10 @@ public class DashboardFragment extends Fragment {
                         i.putExtra("issue_title", "Ongoing issues");
                     }
                     if (finalI == 2) {
-                        i.putExtra("issue_title", "Follow up issues");
+                        i.putExtra("issue_title", "Resolved issues");
                     }
                     if (finalI == 3) {
-                        i.putExtra("issue_title", "Resolved issues");
+                        i.putExtra("issue_title", "Follow up issues");
                     }
                     startActivity(i);
 

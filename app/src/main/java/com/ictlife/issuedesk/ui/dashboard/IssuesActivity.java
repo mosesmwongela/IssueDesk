@@ -18,6 +18,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.gson.JsonElement;
 import com.ictlife.issuedesk.IssueDeskApplication;
 import com.ictlife.issuedesk.R;
+import com.ictlife.issuedesk.ui.create.issue.CreateIssueActivity;
+import com.ictlife.issuedesk.ui.customer.onClickInterface;
 import com.ictlife.issuedesk.ui.dashboard.entity.Issue;
 import com.ictlife.issuedesk.util.PrefManager;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
@@ -48,6 +50,8 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
     private RecyclerView issues_rv;
     private RecyclerView.Adapter issueAdapter;
 
+    private onClickInterface onclickInterface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,19 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
         swipe_refresh_layout = findViewById(R.id.swipe_refresh_layout);
         swipe_refresh_layout.setOnRefreshListener(this);
 
-        issueAdapter = new IssueAdapter(this, issues);
+        onclickInterface = new onClickInterface() {
+            @Override
+            public void setClick(String phoneNumber) {
+
+            }
+
+            @Override
+            public void setIssueClick(int position) {
+                editIssue(position);
+            }
+        };
+
+        issueAdapter = new IssueAdapter(this, issues, onclickInterface);
 
         issues_rv = findViewById(R.id.issues_rv);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -94,6 +110,38 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    private void editIssue(int position) {
+
+        Log.e(TAG, "Issue to edit: " + issues.get(position).getQuery_issue());
+
+        Issue issue = issues.get(position);
+
+        String issue_id = issue.getId();
+        String customer_email = issue.getCustomer_email();
+        String issue_title = issue.getQuery_issue();
+        String issue_detail = issue.getIssue_details();
+        String issue_action = issue.getAction();
+        String issue_channel = issue.getChannel_id();
+        String issue_status = issue.getStatus_id();
+        String issue_assign_to = issue.getAssigned_to();
+
+        Intent i = new Intent(this, CreateIssueActivity.class);
+        i.putExtra("type", "edit_issues");
+        i.putExtra("issue_heading", issue_title);
+
+        i.putExtra("issue_id", issue_id);
+        i.putExtra("customer_email", customer_email);
+        i.putExtra("issue_title", issue_title);
+        i.putExtra("issue_detail", issue_detail);
+        i.putExtra("issue_action", issue_action);
+        i.putExtra("issue_channel", issue_channel);
+        i.putExtra("issue_status", issue_status);
+        i.putExtra("issue_assign_to", issue_assign_to);
+
+        startActivity(i);
 
     }
 
@@ -156,7 +204,7 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
 
                                 issues.add(is);
 
-                                Log.e(TAG, "query_issue: " + query_issue + " issue_details: " + issue_details + " action: " + action);
+                                Log.e(TAG, "query_issue: " + query_issue + " issue_details: " + issue_details + " assigned_to:: " + assigned_to);
                             }
 
                             issueAdapter.notifyDataSetChanged();

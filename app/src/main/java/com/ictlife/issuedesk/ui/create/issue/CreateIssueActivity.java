@@ -1,6 +1,7 @@
 package com.ictlife.issuedesk.ui.create.issue;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,6 +59,9 @@ public class CreateIssueActivity extends AppCompatActivity {
     private MaterialButton next_button;
     private MaterialButton cancel_button;
 
+    private String type = "create_issue";
+    private String issue_assign_to_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +102,6 @@ public class CreateIssueActivity extends AppCompatActivity {
             }
         });
 
-
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +110,98 @@ public class CreateIssueActivity extends AppCompatActivity {
         });
 
         //channelSpinner.getText().toString();
+
+
+        Intent intent = getIntent();
+
+        try {
+            type = intent.getExtras().getString("type");
+
+            if (type != null) {
+
+                String issue_id = intent.getExtras().getString("issue_id");
+                String customer_email = intent.getExtras().getString("customer_email");
+                String issue_title = intent.getExtras().getString("issue_title");
+                String issue_detail = intent.getExtras().getString("issue_detail");
+                String issue_action = intent.getExtras().getString("issue_action");
+                String issue_channel_id = intent.getExtras().getString("issue_channel");
+                String issue_status_id = intent.getExtras().getString("issue_status");
+                issue_assign_to_id = intent.getExtras().getString("issue_assign_to");
+
+                toolbar.setTitle("Update Issue");
+
+
+                //set status
+                String issue_status_text = "";
+                switch (issue_status_id) {
+                    case "0":
+                        issue_status_text = "Open";
+                        break;
+                    case "1":
+                        issue_status_text = "Ongoing";
+                        break;
+                    case "2":
+                        issue_status_text = "Resolved";
+                        break;
+                    case "3":
+                        issue_status_text = "Follow up required";
+                        break;
+                }
+
+                int channel_status_pos = -1;
+                for (int i = 0; i < ISSUE_STATUS.length; i++) {
+                    if (ISSUE_STATUS[i].equalsIgnoreCase(issue_status_text)) {
+                        channel_status_pos = i;
+                        break;
+                    }
+                }
+                issueStatusSpinner.setSelection(channel_status_pos);
+
+                //set channel
+                String issue_channel_text = "";
+
+                switch (issue_channel_id) {
+                    case "3":
+                        issue_channel_text = "Call";
+                        break;
+                    case "1":
+                        issue_channel_text = "Chat";
+                        break;
+                    case "2":
+                        issue_channel_text = "Email";
+                        break;
+                    case "5":
+                        issue_channel_text = "IssueDesk";
+                        break;
+                    case "4":
+                        issue_channel_text = "Social_Media";
+                        break;
+                    case "6":
+                        issue_channel_text = "Other";
+                        break;
+                }
+
+                int channel_text_pos = -1;
+                for (int i = 0; i < CHANNEL_DATA.length; i++) {
+                    if (CHANNEL_DATA[i].equalsIgnoreCase(issue_channel_text)) {
+                        channel_text_pos = i;
+                        break;
+                    }
+                }
+                channelSpinner.setSelection(channel_text_pos);
+
+
+                ti_customer_id.setText(customer_email);
+                ti_issue_title.setText(issue_title);
+                ti_issue_detail.setText(issue_detail);
+                ti_action.setText(issue_action);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void hideKeyboard() {
@@ -137,7 +232,7 @@ public class CreateIssueActivity extends AppCompatActivity {
         }
 
         if (customer_email == null || customer_email.trim().length() == 0) {
-            showErrorDialog("Please enter the customer email");
+            showErrorDialog("Please enter the customer email/phone");
             return;
         }
 
@@ -219,7 +314,6 @@ public class CreateIssueActivity extends AppCompatActivity {
         }
 
         hideKeyboard();
-
 
         Issue issue = new Issue(channel_id, issue_title, issue_detail,
                 customer_email, user_id, status_id, issue_action, created_by);
@@ -345,17 +439,29 @@ public class CreateIssueActivity extends AppCompatActivity {
 
                             // userAdapter.notifyDataSetChanged();
 
-                            String[] assignToData = new String[users.size() + 1];
+                            String[] assignToData = new String[users.size()];
 
                             assignToData[0] = "Assign to";
 
-                            for (int i = 1; i <= users.size() - 1; i++) {
+                            for (int i = 0; i <= users.size() - 1; i++) {
                                 assignToData[i] = users.get(i).getName();
+                                Log.e(TAG, "username: " + users.get(i).getName() + "User id: " + users.get(i).getId());
                             }
 
                             CustomArrayAdapter adapter = new CustomArrayAdapter(CreateIssueActivity.this,
                                     R.layout.spinner_item, assignToData);
                             assignToSpinner.setAdapter(adapter);
+
+                            if (type.equalsIgnoreCase("edit_issues")) {
+                                //set assigned to
+                                for (int i = 0; i <= users.size() - 1; i++) {
+                                    String user_id = users.get(i).getId();
+                                    if (user_id.equalsIgnoreCase(issue_assign_to_id)) {
+                                        assignToSpinner.setSelection(i);
+                                        break;
+                                    }
+                                }
+                            }
 
                         } catch (Exception e) {
                             e.printStackTrace();

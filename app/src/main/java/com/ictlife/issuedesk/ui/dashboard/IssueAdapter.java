@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ictlife.issuedesk.R;
@@ -22,12 +23,14 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     private String TAG = "IssueAdapter";
     private Context context;
     private PrefManager prefManager;
+    private com.ictlife.issuedesk.ui.customer.onClickInterface onClickInterface;
 
-    public IssueAdapter(Context context, List<Issue> data) {
+    public IssueAdapter(Context context, List<Issue> data, com.ictlife.issuedesk.ui.customer.onClickInterface onClickInterface) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.context = context;
         prefManager = new PrefManager(context);
+        this.onClickInterface = onClickInterface;
     }
 
     @NonNull
@@ -38,15 +41,12 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-
-        //  if (position != RecyclerView.NO_POSITION) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         final Issue issue = mData.get(position);
 
         String channel = issue.getChannel_id();
 
-        //  int boxColor = context.getResources().getColor(R.color.box_color);
 
         if (channel.equalsIgnoreCase("1")) {
             holder.tvChannel.setText("chat");
@@ -68,7 +68,12 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
         holder.tvCreatedBy.setText(issue.getCreated_by());
         holder.tvTime.setText(issue.getDate_created());
 
-        // }
+        holder.layout_issue_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickInterface.setIssueClick(position);
+            }
+        });
     }
 
     @Override
@@ -78,6 +83,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvIssueTitle, tvIssueDetail, tvCustomer, tvCreatedBy, tvChannel, tvTime;
+        public ConstraintLayout layout_issue_item;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -87,6 +93,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
             tvCreatedBy = itemView.findViewById(R.id.tvCreatedBy);
             tvChannel = itemView.findViewById(R.id.tvChannel);
             tvTime = itemView.findViewById(R.id.tvTime);
+            layout_issue_item = itemView.findViewById(R.id.layout_issue_item);
         }
     }
 
