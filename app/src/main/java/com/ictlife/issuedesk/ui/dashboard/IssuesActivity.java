@@ -52,6 +52,10 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
 
     private onClickInterface onclickInterface;
 
+    private String issue_id;
+
+    private Boolean isFetchingData = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +97,7 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
 
         try {
             String type = intent.getExtras().getString("type");
-            String issue_id = intent.getExtras().getString("issue_id");
+            issue_id = intent.getExtras().getString("issue_id");
 
             Log.e(TAG, "ISSUE ID: " + issue_id);
 
@@ -147,6 +151,12 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
 
     private void fetchIssues(String issue_id) {
 
+        if (isFetchingData) {
+            return;
+        }
+
+        isFetchingData = true;
+
         issues.clear();
 
         showDialog();
@@ -163,6 +173,7 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
 
                 Log.e(TAG, "onResponse: " + response.toString());
                 hidepDialog();
+                isFetchingData = false;
                 if (!response.isSuccessful()) {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
@@ -261,6 +272,12 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
             return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchIssues(issue_id);
     }
 
     @Override

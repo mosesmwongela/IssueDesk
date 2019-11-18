@@ -40,6 +40,8 @@ public class DashboardFragment extends Fragment {
     private TextView tv_ongoing;
     private TextView tv_follow;
 
+    private Boolean isFetchingData = false;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
@@ -106,6 +108,12 @@ public class DashboardFragment extends Fragment {
 
     private void getDashboardData() {
 
+        if (isFetchingData) {
+            return;
+        }
+
+        isFetchingData = true;
+
         showDialog();
 
         String user_token = "Bearer " + prefManager.getUserToken();
@@ -116,6 +124,7 @@ public class DashboardFragment extends Fragment {
 
                 //  Log.e(TAG, "onResponse: " + response.toString());
                 hidepDialog();
+                isFetchingData = false;
                 if (!response.isSuccessful()) {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
@@ -206,5 +215,11 @@ public class DashboardFragment extends Fragment {
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(true);
         pDialog.show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getDashboardData();
     }
 }
