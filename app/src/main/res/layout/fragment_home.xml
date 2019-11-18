@@ -9,24 +9,6 @@
     android:weightSum="10"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <!--    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="#fefefe">-->
-
-    <!--        <RelativeLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="110dp"-->
-    <!--            android:background="@color/colorPrimary"></RelativeLayout>-->
-
-    <!--        <ImageView-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginTop="85dp"-->
-    <!--            android:src="@drawable/bg_vector" />-->
-
-
-    <!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,15 +16,6 @@
         android:layout_weight="2"
         android:background="@drawable/home_bg">
 
-        <TextView
-            android:id="@+id/textGrid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="ISSUES"
-            android:textColor="#000"
-            android:textSize="34sp"
-            android:visibility="invisible" />
 
     </RelativeLayout>
 
@@ -50,7 +23,7 @@
         android:id="@+id/mainGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="-80dp"
+        android:layout_marginTop="-70dp"
         android:layout_weight="6"
         android:alignmentMode="alignMargins"
         android:animateLayoutChanges="true"
@@ -86,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/open" />
+                    android:src="@drawable/open_issue" />
 
                 <TextView
                     android:id="@+id/tv_open"
@@ -95,8 +68,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/open_img"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:text="Open"
+                    android:layout_marginTop="6dp"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <TextView
+                    style="@style/TextAppearance.ictlife.IssueTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_open"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:text="Open issues"
                     android:textAlignment="center" />
 
             </RelativeLayout>
@@ -137,8 +120,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ongoing_img"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:text="Ongoing"
+                    android:layout_marginTop="6dp"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <TextView
+                    style="@style/TextAppearance.ictlife.IssueTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_ongoing"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:text="Ongoing issues"
                     android:textAlignment="center" />
 
             </RelativeLayout>
@@ -173,7 +166,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/resolved" />
+                    android:src="@drawable/resolved_issue" />
+
 
                 <TextView
                     android:id="@+id/tv_resolved"
@@ -182,8 +176,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/resolved_img"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:text="Resoloved"
+                    android:layout_marginTop="6dp"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <TextView
+                    style="@style/TextAppearance.ictlife.IssueTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_resolved"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:text="Resolved issues"
                     android:textAlignment="center" />
 
             </RelativeLayout>
@@ -221,8 +225,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/follow_img"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:text="Follow up"
+                    android:layout_marginTop="6dp"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <TextView
+                    style="@style/TextAppearance.ictlife.IssueTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_follow"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:text="Follow up issues"
                     android:textAlignment="center" />
 
             </RelativeLayout>
@@ -234,110 +248,5 @@
 
     </GridLayout>
 
-    <!--    <View-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="4dp"-->
-    <!--        android:layout_marginTop="4dp"-->
-    <!--        android:backgroundTint="@color/colorPrimaryDark" />-->
 
-    <!--    <GridLayout-->
-    <!--        android:id="@+id/bottomGrid"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_weight="3"-->
-    <!--        android:alignmentMode="alignMargins"-->
-    <!--        android:animateLayoutChanges="true"-->
-    <!--        android:background="@android:color/transparent"-->
-    <!--        android:columnCount="2"-->
-    <!--        android:columnOrderPreserved="false"-->
-    <!--        android:padding="14dp"-->
-    <!--        android:rowCount="1">-->
-
-    <!--        &lt;!&ndash; ROW 1  &ndash;&gt;-->
-    <!--        &lt;!&ndash; COLUMN 1  &ndash;&gt;-->
-
-    <!--        <androidx.cardview.widget.CardView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="0dp"-->
-    <!--            android:layout_rowWeight="1"-->
-    <!--            android:layout_columnWeight="1"-->
-    <!--            android:layout_marginLeft="16dp"-->
-    <!--            android:layout_marginRight="16dp"-->
-    <!--            android:layout_marginBottom="16dp"-->
-    <!--            app:cardCornerRadius="8dp"-->
-    <!--            app:cardElevation="8dp">-->
-
-    <!--            <RelativeLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center_horizontal|center_vertical"-->
-    <!--                android:layout_margin="16dp"-->
-    <!--                android:orientation="vertical">-->
-
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/customer_img"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="80dp"-->
-    <!--                    android:layout_gravity="center_horizontal"-->
-    <!--                    android:src="@drawable/open" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_customer"-->
-    <!--                    style="@style/TextAppearance.ictlife.IssueTitle"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_below="@id/customer_img"-->
-    <!--                    android:layout_centerHorizontal="true"-->
-    <!--                    android:layout_marginTop="8dp"-->
-    <!--                    android:text="Customers"-->
-    <!--                    android:textAlignment="center" />-->
-
-    <!--            </RelativeLayout>-->
-
-    <!--        </androidx.cardview.widget.CardView>-->
-
-    <!--        &lt;!&ndash; COLUMN 2  &ndash;&gt;-->
-
-    <!--        <androidx.cardview.widget.CardView-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="0dp"-->
-    <!--            android:layout_rowWeight="1"-->
-    <!--            android:layout_columnWeight="1"-->
-    <!--            android:layout_marginLeft="16dp"-->
-    <!--            android:layout_marginRight="16dp"-->
-    <!--            android:layout_marginBottom="16dp"-->
-    <!--            app:cardCornerRadius="8dp"-->
-    <!--            app:cardElevation="8dp">-->
-
-    <!--            <RelativeLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center_horizontal|center_vertical"-->
-    <!--                android:layout_margin="16dp"-->
-    <!--                android:orientation="vertical">-->
-
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/users_img"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="80dp"-->
-    <!--                    android:layout_gravity="center_horizontal"-->
-    <!--                    android:src="@drawable/ongoing" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/tv_users"-->
-    <!--                    style="@style/TextAppearance.ictlife.IssueTitle"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_below="@id/users_img"-->
-    <!--                    android:layout_centerHorizontal="true"-->
-    <!--                    android:layout_marginTop="8dp"-->
-    <!--                    android:text="CX team"-->
-    <!--                    android:textAlignment="center" />-->
-
-    <!--            </RelativeLayout>-->
-
-    <!--        </androidx.cardview.widget.CardView>-->
-
-
-    <!--    </GridLayout>-->
 </LinearLayout>

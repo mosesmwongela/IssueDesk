@@ -44,7 +44,7 @@
                 tools:text="Sender ID" />
 
             <TextView
-                android:id="@+id/tvAction"
+                android:id="@+id/tvIssueDetail"
                 style="@style/TextAppearance.ictlife.IssueAction"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 android:layout_marginLeft="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_medium"
                 app:layout_constraintStart_toEndOf="@id/vertical_bar"
-                app:layout_constraintTop_toBottomOf="@id/tvAction"
+                app:layout_constraintTop_toBottomOf="@id/tvIssueDetail"
                 tools:text="Customer: Nimble" />
 
             <TextView
@@ -78,21 +78,11 @@
                 android:layout_marginStart="@dimen/spacing_medium"
                 android:layout_marginLeft="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_medium"
+                android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@id/vertical_bar"
                 app:layout_constraintTop_toBottomOf="@id/tvCustomer"
                 tools:text="Created by: CX team" />
 
-
-            <!--            <com.google.android.material.chip.Chip-->
-            <!--                android:id="@+id/tvChannel"-->
-            <!--                style="@style/TextAppearance.ictlife.ChipText"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="35dp"-->
-            <!--                android:text="Webchat"-->
-            <!--                android:textAlignment="center"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toEndOf="@id/tvAction"-->
-            <!--                app:layout_constraintTop_toBottomOf="@id/tvTime" />-->
 
             <TextView
                 android:id="@+id/tvChannel"
@@ -104,8 +94,9 @@
                 android:layout_marginTop="2dp"
                 android:padding="1dp"
                 android:textAlignment="center"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/tvTime"
-                app:layout_constraintStart_toEndOf="@id/tvAction"
+                app:layout_constraintStart_toEndOf="@id/tvIssueDetail"
                 app:layout_constraintTop_toBottomOf="@id/tvTime"
                 tools:text="Channel: Webchat" />
 

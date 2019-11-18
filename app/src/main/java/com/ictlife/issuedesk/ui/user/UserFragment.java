@@ -1,6 +1,8 @@
 package com.ictlife.issuedesk.ui.user;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.gson.JsonElement;
 import com.ictlife.issuedesk.IssueDeskApplication;
 import com.ictlife.issuedesk.R;
+import com.ictlife.issuedesk.ui.customer.onClickInterface;
 import com.ictlife.issuedesk.util.PrefManager;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -26,6 +29,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +51,8 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private RecyclerView user_rv;
     private RecyclerView.Adapter userAdapter;
 
+    private onClickInterface onclickInterface;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_user, container, false);
@@ -55,7 +62,14 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         swipe_refresh_layout = root.findViewById(R.id.swipe_refresh_layout);
         swipe_refresh_layout.setOnRefreshListener(this);
 
-        userAdapter = new UserAdapter(getContext(), users);
+        onclickInterface = new onClickInterface() {
+            @Override
+            public void setClick(String phoneNumber) {
+                actionCall(phoneNumber);
+            }
+        };
+
+        userAdapter = new UserAdapter(getContext(), users, onclickInterface);
 
         user_rv = root.findViewById(R.id.user_rv);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -73,6 +87,25 @@ public class UserFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         fetchUser();
 
         return root;
+    }
+
+    private void actionCall(String phoneNumber) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null));
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isKenyanPhoneNUmber(String phone) {
+        try {
+            Pattern kenyanPhoneNumberPattern = Pattern.compile("^(?:254|\\+254|0)?(7[0-9]{8})$");
+            Matcher matcher = kenyanPhoneNumberPattern.matcher(phone);
+            return matcher.matches();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 

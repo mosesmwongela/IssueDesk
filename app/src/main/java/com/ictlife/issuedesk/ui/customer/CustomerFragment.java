@@ -1,6 +1,8 @@
 package com.ictlife.issuedesk.ui.customer;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +29,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +47,7 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
     private List<Customer> customers = new ArrayList<>();
     private PrefManager prefManager;
     private String TAG = "CustomerFragment";
+    private onClickInterface onclickInterface;
 
     private SwipeRefreshLayout swipe_refresh_layout;
     private RecyclerView customer_rv;
@@ -66,7 +71,15 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
         swipe_refresh_layout = root.findViewById(R.id.swipe_refresh_layout);
         swipe_refresh_layout.setOnRefreshListener(this);
 
-        customerAdapter = new CustomerAdapter(getContext(), customers);
+
+        onclickInterface = new onClickInterface() {
+            @Override
+            public void setClick(String phoneNumber) {
+                actionCall(phoneNumber);
+            }
+        };
+
+        customerAdapter = new CustomerAdapter(getContext(), customers, onclickInterface);
 
         customer_rv = root.findViewById(R.id.customer_rv);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -81,9 +94,29 @@ public class CustomerFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         customer_rv.setAdapter(customerAdapter);
 
+
         fetchCustomer();
 
         return root;
+    }
+
+    private void actionCall(String phoneNumber) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null));
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isKenyanPhoneNUmber(String phone) {
+        try {
+            Pattern kenyanPhoneNumberPattern = Pattern.compile("^(?:254|\\+254|0)?(7[0-9]{8})$");
+            Matcher matcher = kenyanPhoneNumberPattern.matcher(phone);
+            return matcher.matches();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 

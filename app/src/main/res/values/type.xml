@@ -164,7 +164,13 @@
     <style name="TextAppearance.ictlife.IssueTitle" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/quicksand_bold</item>
         <item name="android:textColor">#000000</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TextAppearance.ictlife.IssueTitleNumber" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/eczar</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="TextAppearance.ictlife.SpinnerText" parent="TextAppearance.MaterialComponents.Caption">
@@ -200,8 +206,8 @@
 
     <style name="TextAppearance.ictlife.TransactionTags" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/quicksand_bold</item>
-        <item name="android:textColor">#cbd3d7</item>
-        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">#64686D</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextAppearance.ictlife.ChipText" parent="TextAppearance.MaterialComponents.Caption">

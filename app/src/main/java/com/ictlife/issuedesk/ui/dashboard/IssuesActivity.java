@@ -79,7 +79,7 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
             String type = intent.getExtras().getString("type");
             String issue_id = intent.getExtras().getString("issue_id");
 
-            Log.e(TAG, "ISSUE ID: "+issue_id);
+            Log.e(TAG, "ISSUE ID: " + issue_id);
 
             //get issue data
             if (type.equalsIgnoreCase("issues")) {
@@ -156,7 +156,7 @@ public class IssuesActivity extends AppCompatActivity implements SwipeRefreshLay
 
                                 issues.add(is);
 
-                                Log.e(TAG, "query_issue: " + query_issue);
+                                Log.e(TAG, "query_issue: " + query_issue + " issue_details: " + issue_details + " action: " + action);
                             }
 
                             issueAdapter.notifyDataSetChanged();

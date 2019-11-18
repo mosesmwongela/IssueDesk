@@ -114,7 +114,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
 
-              //  Log.e(TAG, "onResponse: " + response.toString());
+                //  Log.e(TAG, "onResponse: " + response.toString());
                 hidepDialog();
                 if (!response.isSuccessful()) {
                     try {
@@ -128,7 +128,7 @@ public class DashboardFragment extends Fragment {
                 } else {
 
                     JsonElement responseUser = response.body();
-                  //  Log.e(TAG, "onResponse: " + responseUser.toString());
+                    //  Log.e(TAG, "onResponse: " + responseUser.toString());
 
                     if (responseUser != null) {
 
@@ -143,31 +143,34 @@ public class DashboardFragment extends Fragment {
                             String totalFollowUp = issuesReport.getString("total_follow_up_required");
                             String grandTotal = issuesReport.getString("grand_total");
 
+                            tv_open.setText(totalOpen);
+                            tv_resolved.setText(totalResolved);
+                            tv_follow.setText(totalFollowUp);
+                            tv_ongoing.setText(totalOngoing);
 
-                            if (Integer.parseInt(totalResolved) == 0 || Integer.parseInt(totalResolved) > 1) {
-                                tv_resolved.setText(totalResolved + " Resolved issues");
-                            } else {
-                                tv_resolved.setText(totalResolved + " Resolved issue");
-                            }
+//                            if (Integer.parseInt(totalResolved) == 0 || Integer.parseInt(totalResolved) > 1) {
+//                                tv_resolved.setText(totalResolved + " Resolved issues");
+//                            } else {
+//                                tv_resolved.setText(totalResolved + " Resolved issue");
+//                            }
 
-                            if (Integer.parseInt(totalOpen) == 0 || Integer.parseInt(totalOpen) > 1) {
-                                tv_open.setText(totalOpen + " Open issues");
-                            } else {
-                                tv_open.setText(totalOpen + " Open issue");
-                            }
+//                            if (Integer.parseInt(totalOpen) == 0 || Integer.parseInt(totalOpen) > 1) {
+//                                tv_open.setText(totalOpen + " Open issues");
+//                            } else {
+//                                tv_open.setText(totalOpen + " Open issue");
+//                            }
 
-                            if (Integer.parseInt(totalFollowUp) == 0 || Integer.parseInt(totalFollowUp) > 1) {
-                                tv_follow.setText(totalFollowUp + " Follow Up issues");
-                            } else {
-                                tv_follow.setText(totalFollowUp + " Follow Up issue");
-                            }
+//                            if (Integer.parseInt(totalFollowUp) == 0 || Integer.parseInt(totalFollowUp) > 1) {
+//                                tv_follow.setText(totalFollowUp + " Follow Up issues");
+//                            } else {
+//                                tv_follow.setText(totalFollowUp + " Follow Up issue");
+//                            }
 
-                            if (Integer.parseInt(totalOngoing) == 0 || Integer.parseInt(totalOngoing) > 1) {
-                                tv_ongoing.setText(totalOngoing + " Ongoing issues");
-                            } else {
-                                tv_ongoing.setText(totalOngoing + " Ongoing issue");
-                            }
-
+//                            if (Integer.parseInt(totalOngoing) == 0 || Integer.parseInt(totalOngoing) > 1) {
+//                                tv_ongoing.setText(totalOngoing + " Ongoing issues");
+//                            } else {
+//                                tv_ongoing.setText(totalOngoing + " Ongoing issue");
+//                            }
 
                         } catch (Exception e) {
                             e.printStackTrace();

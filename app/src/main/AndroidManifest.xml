@@ -34,6 +34,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.dashboard.IssuesActivity"
+            android:theme="@style/MainActivity.AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.create.issue.CreateIssueActivity"

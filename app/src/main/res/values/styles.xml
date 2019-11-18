@@ -24,11 +24,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:fontFamily">@font/quicksand_bold</item>
+
     </style>
 
     <style name="Widget.Userapp.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:theme">@style/AppTheme</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="DialogSpinner" parent="@android:style/Widget.Holo.Light.Spinner">

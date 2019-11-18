@@ -63,7 +63,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
         }
 
         holder.tvIssueTitle.setText(issue.getQuery_issue());
-        holder.tvAction.setText(issue.getAction());
+        holder.tvIssueDetail.setText(issue.getIssue_details());
         holder.tvCustomer.setText(issue.getCustomer_email());
         holder.tvCreatedBy.setText(issue.getCreated_by());
         holder.tvTime.setText(issue.getDate_created());
@@ -77,12 +77,12 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvIssueTitle, tvAction, tvCustomer, tvCreatedBy, tvChannel, tvTime;
+        public TextView tvIssueTitle, tvIssueDetail, tvCustomer, tvCreatedBy, tvChannel, tvTime;
 
         ViewHolder(View itemView) {
             super(itemView);
             tvIssueTitle = itemView.findViewById(R.id.tvIssueTitle);
-            tvAction = itemView.findViewById(R.id.tvAction);
+            tvIssueDetail = itemView.findViewById(R.id.tvIssueDetail);
             tvCustomer = itemView.findViewById(R.id.tvCustomer);
             tvCreatedBy = itemView.findViewById(R.id.tvCreatedBy);
             tvChannel = itemView.findViewById(R.id.tvChannel);
